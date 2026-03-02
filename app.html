@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Matrimonio di Giacomo e Sabina — 6 Settembre 2026, San Giorgio Monferrato">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Giacomo &amp; Sabina — 6 Settembre 2026</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-brand">G &amp; S</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#storia">Quiz</a></li>
+      <li><a href="#cerimonia">Cerimonia</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
+      <li><a href="#info">Info</a></li>
+      <li><a href="#lista-nozze">Lista nozze</a></li>
+      <li><a href="#rsvp" class="nav-cta">RSVP</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Siete invitati al matrimonio di</p>
+      <div class="hero-names-wrap">
+        <span class="hero-name hero-name--left">Giacomo</span>
+        <span class="hero-ampersand">&amp;</span>
+        <span class="hero-name hero-name--right">Sabina</span>
+      </div>
+      <div class="hero-info">
+        <span class="hero-date">6 Settembre 2026</span>
+        <span class="hero-dot">·</span>
+        <span class="hero-place">San Giorgio Monferrato</span>
+      </div>
+      <a href="#rsvp" class="btn-primary hero-cta">Conferma la presenza</a>
+    </div>
+    <a href="#countdown" class="hero-scroll" aria-label="Scorri verso il basso">
+      <div class="hero-scroll-line"></div>
+    </a>
+  </section>
+
+  <!-- ===== COUNTDOWN ===== -->
+  <section id="countdown" class="countdown-section">
+    <p class="countdown-label">Mancano</p>
+    <div class="countdown-grid">
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-unit">giorni</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-unit">ore</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-minutes">--</span>
+        <span class="countdown-unit">minuti</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-seconds">--</span>
+        <span class="countdown-unit">secondi</span>
+      </div>
+    </div>
+    <p class="countdown-sub">al nostro grande giorno</p>
+  </section>
+
+  <!-- ===== QUIZ SUGLI SPOSI ===== -->
+  <section id="storia" class="storia-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Chi siamo</span>
+      <h2 class="section-title">Quiz sugli sposi</h2>
+      <p class="section-subtitle">Quanto ci conoscete davvero? 5 domande. Nessun ritorno.</p>
+    </div>
+
+    <div class="quiz-wrap" id="quiz-wrap">
+      <div class="quiz-meta">
+        <span class="quiz-counter" id="quiz-counter">1 / 5</span>
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+      </div>
+      <div class="quiz-card" id="quiz-card">
+        <p class="quiz-question" id="quiz-question"></p>
+        <div class="quiz-options" id="quiz-options"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz result overlay (fullscreen, attivato da JS) -->
+  <div class="quiz-overlay" id="quiz-overlay" aria-hidden="true">
+    <div class="quiz-overlay-petals" id="quiz-overlay-fireworks"></div>
+    <div class="quiz-overlay-content">
+      <span class="quiz-result-script">Giacomo &amp; Sabina</span>
+      <div class="quiz-result-line"></div>
+      <p class="quiz-result-msg" id="quiz-result-msg"></p>
+      <button class="quiz-result-btn" id="quiz-result-btn">Riprova</button>
+    </div>
+  </div>
+
+  <!-- ===== LA CERIMONIA ===== -->
+  <section id="cerimonia" class="cerimonia-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Il grande giorno</span>
+      <h2 class="section-title">La Cerimonia</h2>
+    </div>
+
+    <div class="cerimonia-grid">
+
+      <div class="cerimonia-card">
+        <div class="cerimonia-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3>Dove</h3>
+        <p class="cerimonia-place">Grotta di Lourdes<br>fam. Ganora</p>
+        <p class="cerimonia-sub">San Giorgio Monferrato (AL)</p>
+        <a href="https://maps.app.goo.gl/3TAU9HqGsEMTk6HVA" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          Apri in Maps
+        </a>
+      </div>
+
+      <div class="cerimonia-card cerimonia-card--center">
+        <div class="cerimonia-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Quando</h3>
+        <div class="orari">
+          <div class="orario">
+            <span class="orario-ora">12:00</span>
+            <span class="orario-desc">Cerimonia religiosa</span>
+          </div>
+          <div class="orario-sep"></div>
+          <div class="orario">
+            <span class="orario-ora">13:30</span>
+            <span class="orario-desc">Aperitivo &amp; Ricevimento</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cerimonia-card">
+        <div class="cerimonia-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="1"/>
+            <path d="M16 8h4a1 1 0 0 1 .84.47l2 3.17a1 1 0 0 1 .16.53V19a1 1 0 0 1-1 1h-1"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3>Parcheggio</h3>
+        <p class="cerimonia-place">Area parcheggio<br>nelle vicinanze</p>
+        <p class="cerimonia-sub">Troverete i cartelli sul posto</p>
+        <a href="https://maps.app.goo.gl/Rum9fBjNQa6yjd5aA" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          Vedi su Maps
+        </a>
+      </div>
+
+    </div>
+
+    <div class="weather-note">
+      <p>☀️ Vi promettiamo solennemente che non pioverà. E se piove, la colpa è di qualcun altro.</p>
+    </div>
+  </section>
+
+  <!-- ===== I TESTIMONI ===== -->
+  <section id="testimoni" class="testimoni-section">
+    <div class="section-header">
+      <span class="section-eyebrow">I nostri complici</span>
+      <h2 class="section-title">I Testimoni</h2>
+    </div>
+
+    <div class="testimoni-side">
+      <h3 class="testimoni-side-label">Per Giacomo</h3>
+      <div class="testimoni-row">
+
+        <div class="testimone-card">
+          <div class="testimone-avatar"><img src="Mattia.png" alt="Mattia"></div>
+          <h4 class="testimone-name">Mattia</h4>
+          <p class="testimone-role">Il fratello</p>
+          <p class="testimone-bio">Presente amico di sangue, è il confidente più onesto e testimone nella luce e nel buio della vita di Giacomo.</p>
+          <div class="testimone-procon">
+            <p class="procon procon-pro"><span class="procon-label">Pro</span> Mattia è la persona con cui tutti vorrebbero confrontarsi, solare ed empatico.</p>
+            <p class="procon procon-contro"><span class="procon-label">Contro</span> Warning! Disturbo ossessivo compulsivo germofobico!</p>
+          </div>
+          <a href="tel:+393458033908" class="testimone-tel">345 803 3908</a>
+        </div>
+
+        <div class="testimone-card">
+          <div class="testimone-avatar"><img src="Giulio.png" alt="Giulio"></div>
+          <h4 class="testimone-name">Giulio</h4>
+          <p class="testimone-role">L'amico</p>
+          <p class="testimone-bio">Avete presente quelle persone che senti poco ma che sai che ci saranno sempre? Giulio è il fratello.</p>
+          <div class="testimone-procon">
+            <p class="procon procon-pro"><span class="procon-label">Pro</span> Vi farà ridere anche nei momenti più strani, con la sua genuina semplicità e presenza.</p>
+            <p class="procon procon-contro"><span class="procon-label">Contro</span> È il re del black humour, aspettatevi le peggio cose e prendetela sul ridere!</p>
+          </div>
+          <a href="tel:+393489057894" class="testimone-tel">348 905 7894</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="testimoni-side">
+      <h3 class="testimoni-side-label">Per Sabina</h3>
+      <div class="testimoni-row">
+
+        <div class="testimone-card">
+          <div class="testimone-avatar"><img src="Martina.png" alt="Martina"></div>
+          <h4 class="testimone-name">Martina</h4>
+          <p class="testimone-role">La sorella</p>
+          <p class="testimone-bio">Fiori così diversi di uno stesso giardino, Martina e Sabina sono cresciute insieme.</p>
+          <div class="testimone-procon">
+            <p class="procon procon-pro"><span class="procon-label">Pro</span> Martina è determinata, umana ed emana una forte e rassicurante energia.</p>
+            <p class="procon procon-contro"><span class="procon-label">Contro</span> Non affidatele i vostri beni, li perderà insieme alle sue chiavi.</p>
+          </div>
+          <a href="tel:+393928286696" class="testimone-tel">392 828 6696</a>
+        </div>
+
+        <div class="testimone-card">
+          <div class="testimone-avatar"><img src="Caterina.png" alt="Caterina"></div>
+          <h4 class="testimone-name">Caterina</h4>
+          <p class="testimone-role">La sorella</p>
+          <p class="testimone-bio">È la nana di casa Ganora, ma è la più forte, sensibile e persino più generosa di Sabina!</p>
+          <div class="testimone-procon">
+            <p class="procon procon-pro"><span class="procon-label">Pro</span> Troverà sempre la cosa più profonda da dire, fidatevi della sua dolcezza e genuinità!</p>
+            <p class="procon procon-contro"><span class="procon-label">Contro</span> Assicuratevi abbia la testa ben attaccata al collo, se non l'avrà lasciata già da qualche parte!</p>
+          </div>
+          <a href="tel:+393777063367" class="testimone-tel">377 706 3367</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INFO PRATICHE ===== -->
+  <section id="info" class="info-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Tutto quello che vi serve</span>
+      <h2 class="section-title">Info Pratiche</h2>
+    </div>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+        </div>
+        <h3>Come arrivare</h3>
+        <p>La cerimonia si svolge alla <strong>Grotta di Lourdes fam. Ganora</strong>, a San Giorgio Monferrato (AL). Troverete segnaletica in loco per orientarvi verso il parcheggio.</p>
+        <a href="https://maps.app.goo.gl/3TAU9HqGsEMTk6HVA" target="_blank" rel="noopener noreferrer" class="btn-outline">Indicazioni stradali</a>
+      </div>
+
+
+      <div class="info-card info-card--accent">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3>Una nota importante</h3>
+        <p>La giornata è pensata per adulti che vogliono festeggiare senza pensieri. Vi chiediamo gentilmente di lasciare i bambini a casa — sappiamo che è un sacrificio, ma sarà una festa solo per grandi!</p>
+        <p class="info-emoji">🥂</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== LISTA NOZZE ===== -->
+  <section id="lista-nozze" class="lista-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Se volete farci un regalo</span>
+      <h2 class="section-title">Lista Nozze</h2>
+    </div>
+    <div class="lista-content">
+      <p class="lista-text">Abbiamo già tutto quello che ci serve — anzi, troppe cose. Il regalo più bello che potete farci è contribuire ai ricordi della nostra luna di miele.</p>
+      <p class="lista-text">Se volete partecipare, potete farlo con un bonifico. Non esiste cifra giusta o sbagliata.</p>
+      <div class="iban-box">
+        <p class="iban-intestato">Intestato a Giacomo Cazzaro, Ganora Sabina</p>
+        <p class="iban-number">IT21 A032 9601 6010 0006 4537 789</p>
+        <p class="iban-causale">Causale consigliata: <em>Luna di miele G&amp;S</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RSVP ===== -->
+  <section id="rsvp" class="rsvp-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Ci siete?</span>
+      <h2 class="section-title">RSVP</h2>
+      <p class="section-subtitle">Confermate la vostra presenza entro l'<strong>8 agosto 2026</strong></p>
+    </div>
+
+    <form id="rsvp-form" class="rsvp-form" novalidate>
+
+      <!-- BLOCCO 1: Chi sei -->
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">Chi sei?</legend>
+        <div class="form-row">
+          <div class="form-field form-field--full">
+            <label for="nome_cognome">Nome e cognome <span class="required">*</span></label>
+            <input type="text" id="nome_cognome" name="nome_cognome" required autocomplete="name" placeholder="Mario Rossi">
+          </div>
+        </div>
+        <div class="form-row form-row--two">
+          <div class="form-field">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="mario@esempio.com">
+          </div>
+          <div class="form-field">
+            <label for="telefono">Telefono <span class="required">*</span></label>
+            <input type="tel" id="telefono" name="telefono" required autocomplete="tel" placeholder="+39 333 000 0000">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- BLOCCO 1b: Accompagnatori (generato da JS al blur del nome) -->
+      <fieldset class="form-fieldset form-fieldset--hidden" id="fieldset-accompagnatori">
+        <legend class="form-legend">Vengono anche con te?</legend>
+        <p class="accompagnatori-sub">Li abbiamo invitati insieme a te — disattiva chi non riesce a venire</p>
+        <div class="accompagnatori-grid" id="accompagnatori-grid"></div>
+      </fieldset>
+
+      <!-- BLOCCO 2: Presenza -->
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">Ci sarai?</legend>
+        <div class="presenza-grid" role="group" aria-label="Conferma presenza">
+          <label class="presenza-option">
+            <input type="radio" name="presenza" value="si" required>
+            <span class="presenza-card">
+              <span class="presenza-emoji">🥂</span>
+              <span class="presenza-text">Ci sono!</span>
+            </span>
+          </label>
+          <label class="presenza-option">
+            <input type="radio" name="presenza" value="forse">
+            <span class="presenza-card">
+              <span class="presenza-emoji">🤔</span>
+              <span class="presenza-text">Forse</span>
+            </span>
+          </label>
+          <label class="presenza-option">
+            <input type="radio" name="presenza" value="no">
+            <span class="presenza-card">
+              <span class="presenza-emoji">😢</span>
+              <span class="presenza-text">Purtroppo no</span>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- BLOCCO 3: Logistica (condizionale) -->
+      <fieldset class="form-fieldset form-fieldset--hidden" id="fieldset-logistica">
+        <legend class="form-legend">Logistica</legend>
+        <div class="form-row form-row--two">
+          <div class="form-field">
+            <label for="ricevimento">Presente al ricevimento (ore 13:30)?</label>
+            <select id="ricevimento" name="ricevimento">
+              <option value="">— Seleziona —</option>
+              <option value="si">Sì, ci sono</option>
+              <option value="no">Solo cerimonia</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="auto">Numero di auto</label>
+            <select id="auto" name="auto">
+              <option value="0">Nessuna</option>
+              <option value="1">1 auto</option>
+              <option value="2">2 auto</option>
+              <option value="3+">3 o più</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field form-field--full">
+            <label for="pernottamento">
+              Avete bisogno di pernottare?
+              <span class="form-hint">L'alloggio è a vostra cura — vi aiutiamo a trovare qualcosa di comodo!</span>
+            </label>
+            <select id="pernottamento" name="pernottamento">
+              <option value="">— Seleziona —</option>
+              <option value="si">Sì, ci serve un posto</option>
+              <option value="no">No, rientriamo in giornata</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- BLOCCO 4: Alimentari per persona (generato da JS) -->
+      <fieldset class="form-fieldset form-fieldset--hidden" id="fieldset-alimentari">
+        <legend class="form-legend">A tavola</legend>
+        <p class="accompagnatori-sub">Una riga per ogni persona del gruppo — aiutaci a organizzare i pasti</p>
+        <div id="alimentari-rows"></div>
+      </fieldset>
+
+      <!-- BLOCCO 5: Extra (condizionale) -->
+      <fieldset class="form-fieldset form-fieldset--hidden" id="fieldset-extra">
+        <legend class="form-legend">Per noi <span class="form-legend-opt">(opzionale)</span></legend>
+        <div class="form-row">
+          <div class="form-field form-field--full">
+            <label for="come_conosci">Come conosci gli sposi?</label>
+            <select id="come_conosci" name="come_conosci">
+              <option value="">— Seleziona (opzionale) —</option>
+              <option value="amico">Amico/a</option>
+              <option value="famiglia">Famiglia</option>
+              <option value="collega">Collega</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field form-field--full">
+            <label for="canzone">La tua canzone per il DJ 🎶</label>
+            <input type="text" id="canzone" name="canzone" placeholder="Artista — Titolo">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field form-field--full">
+            <label for="messaggio">Un messaggio per noi</label>
+            <textarea id="messaggio" name="messaggio" rows="3" placeholder="Auguri, battute, consigli non richiesti..."></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- SUBMIT -->
+      <div class="form-submit">
+        <button type="submit" class="btn-primary btn-submit" id="submit-btn">
+          <span class="btn-text">Invia la conferma</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- RESPONSE -->
+      <div class="form-response" id="form-response" role="alert" aria-live="polite"></div>
+
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer" class="footer">
+    <div class="footer-inner">
+      <p class="footer-script">Giacomo &amp; Sabina</p>
+      <p class="footer-date">6 · 9 · 2026</p>
+      <div class="footer-contacts">
+        <p class="footer-contacts-title">Per qualsiasi necessità, contatta i nostri testimoni:</p>
+        <div class="footer-contacts-grid">
+          <a href="tel:+393458033908" class="footer-contact">
+            <span class="fc-name">Mattia</span>
+            <span class="fc-tel">345 803 3908</span>
+          </a>
+          <a href="tel:+393489057894" class="footer-contact">
+            <span class="fc-name">Giulio</span>
+            <span class="fc-tel">348 905 7894</span>
+          </a>
+          <a href="tel:+393928286696" class="footer-contact">
+            <span class="fc-name">Martina</span>
+            <span class="fc-tel">392 828 6696</span>
+          </a>
+          <a href="tel:+393777063367" class="footer-contact">
+            <span class="fc-name">Caterina</span>
+            <span class="fc-tel">377 706 3367</span>
+          </a>
+        </div>
+      </div>
+      <p class="footer-love">Con amore ♥</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Giacomo & Sabina — 6 Settembre 2026">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Giacomo &amp; Sabina — 6 · 9 · 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:      #F5F0E8;
+      --olive:      #7A8C6A;
+      --olive-dark: #4A5C3A;
+      --olive-pale: #E8EEE2;
+      --text:       #2C3020;
+      --text-muted: #6B7060;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--ivory);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* ── Background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 5% 95%,  rgba(122,140,106,.13) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 45% at 95% 5%,  rgba(122,140,106,.10) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 30% at 50% 50%, rgba(232,238,226,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .page {
+      position: relative;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(2rem, 6vw, 4rem);
+      text-align: center;
+      gap: 0;
+    }
+
+    /* ── Animazioni entrata ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lineGrow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .reveal {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* ── Elementi ── */
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 2rem;
+      animation-delay: 0.1s;
+    }
+
+    .line-top {
+      width: clamp(40px, 8vw, 72px);
+      height: 1px;
+      background: var(--olive);
+      transform-origin: left;
+      transform: scaleX(0);
+      animation: lineGrow 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      margin: 0 auto 1.8rem;
+    }
+
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.8rem, 13vw, 9rem);
+      color: var(--olive-dark);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      animation-delay: 0.25s;
+    }
+
+    .sep {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      animation-delay: 0.4s;
+    }
+    .sep-line {
+      width: clamp(24px, 5vw, 48px);
+      height: 1px;
+      background: var(--olive-light, #B5C4A5);
+    }
+    .sep-diamond {
+      width: 5px;
+      height: 5px;
+      background: var(--olive);
+      transform: rotate(45deg);
+    }
+
+    .date-place {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      animation-delay: 0.45s;
+    }
+    .date-place .dot { margin: 0 0.75em; opacity: 0.5; }
+
+    /* ── Countdown ── */
+    .countdown {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: clamp(0.75rem, 3vw, 2rem);
+      margin-bottom: 2.5rem;
+      animation-delay: 0.6s;
+    }
+    .cd-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      min-width: clamp(44px, 10vw, 72px);
+    }
+    .cd-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 300;
+      color: var(--olive-dark);
+      line-height: 1;
+      min-width: 2ch;
+      display: block;
+    }
+    .cd-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.5rem, 1.2vw, 0.6rem);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--olive);
+    }
+    .cd-colon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      color: var(--olive-light, #B5C4A5);
+      line-height: 1;
+      padding-top: 0.05em;
+      animation: colonBlink 1s step-end infinite;
+    }
+    @keyframes colonBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-muted);
+      animation-delay: 0.75s;
+    }
+
+    .line-bottom {
+      width: clamp(40px, 8vw, 72px);
+      height: 1px;
+      background: var(--olive);
+      transform-origin: right;
+      transform: scaleX(0);
+      animation: lineGrow 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+      margin: 1.8rem auto 0;
+    }
+
+    /* ── Mobile ── */
+    @media (max-height: 600px) {
+      .sep         { margin-bottom: 1rem; }
+      .date-place  { margin-bottom: 1.5rem; }
+      .countdown   { margin-bottom: 1.5rem; }
+      .line-top    { margin-bottom: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <div class="line-top"></div>
+
+    <p class="eyebrow reveal">Il nostro matrimonio</p>
+
+    <h1 class="names reveal">Giacomo &amp; Sabina</h1>
+
+    <div class="sep reveal">
+      <span class="sep-line"></span>
+      <span class="sep-diamond"></span>
+      <span class="sep-line"></span>
+    </div>
+
+    <p class="date-place reveal">
+      6 Settembre 2026
+      <span class="dot">·</span>
+      San Giorgio Monferrato
+    </p>
+
+    <div class="countdown reveal" id="countdown">
+      <div class="cd-item">
+        <span class="cd-num" id="cd-days">--</span>
+        <span class="cd-label">giorni</span>
+      </div>
+      <span class="cd-colon">:</span>
+      <div class="cd-item">
+        <span class="cd-num" id="cd-hours">--</span>
+        <span class="cd-label">ore</span>
+      </div>
+      <span class="cd-colon">:</span>
+      <div class="cd-item">
+        <span class="cd-num" id="cd-minutes">--</span>
+        <span class="cd-label">minuti</span>
+      </div>
+      <span class="cd-colon">:</span>
+      <div class="cd-item">
+        <span class="cd-num" id="cd-seconds">--</span>
+        <span class="cd-label">secondi</span>
+      </div>
+    </div>
+
+    <p class="tagline reveal">Il sito è in arrivo — qui troverete tutti i dettagli</p>
+
+    <div class="line-bottom"></div>
+
+  </main>
+
+  <script>
+    const TARGET = new Date('2026-09-06T12:00:00');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const diff = TARGET - new Date();
+      if (diff <= 0) {
+        ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+          document.getElementById(id).textContent = '00';
+        });
+        return;
+      }
+      document.getElementById('cd-days').textContent    = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent   = pad(Math.floor(diff % 86400000 / 3600000));
+      document.getElementById('cd-minutes').textContent = pad(Math.floor(diff % 3600000 / 60000));
+      document.getElementById('cd-seconds').textContent = pad(Math.floor(diff % 60000 / 1000));
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>
